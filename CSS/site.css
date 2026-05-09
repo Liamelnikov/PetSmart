@@ -1,0 +1,314 @@
+:root {
+  /* ===== Beige & Brown Palette ===== */
+  --primary: #C9A27C;        /* צבע ראשי – פעולות והדגשות */
+  --primary-600: #B08B67;    /* וריאציה כהה יותר לצבע הראשי */
+  --accent: #8B6A55;         /* צבע משני – כפתורים, הובר */
+  --ink: #5A3E2B;            /* צבע כותרות */
+  --text: #3E2A1F;           /* צבע טקסט רגיל */
+  --muted: #8C7A6B;          /* טקסט משני / פחות חשוב */
+  --bg: #F7EFE6;             /* רקע כללי של האתר */
+  --card: #FFFFFF;           /* רקע כרטיסים */
+  --line: #E6D8CB;           /* צבע גבולות וקווים */
+  --shadow: 0 10px 28px rgba(90, 62, 43, .12); /* צל רך */
+  --radius: 16px;            /* עיגול פינות כללי */
+
+  --h-font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; /* פונט כותרות */
+  --b-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;   /* פונט טקסט */
+}
+
+/* ===============================
+   BASE
+================================ */
+html,
+body {
+  height: 100%;                    /* גובה מלא למסך */
+  background: var(--bg);           /* שימוש בצבע הרקע הכללי */
+  color: var(--text);              /* צבע טקסט ברירת מחדל */
+  font-family: var(--b-font);      /* פונט גוף */
+  scroll-behavior: smooth;         /* גלילה חלקה */
+  font-size: clamp(18px, 1vw + 13px, 22px); /* גודל טקסט רספונסיבי */
+}
+
+body {
+  display: flex;                   /* מאפשר מבנה עמודי */
+  flex-direction: column;          /* סידור אנכי */
+}
+
+main {
+  flex: 1;                         /* דוחף את הפוטר למטה */
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--h-font);      /* פונט כותרות */
+  color: var(--ink);               /* צבע כותרות */
+}
+
+p {
+  line-height: 1.65;               /* ריווח שורות לקריאות */
+}
+
+.text-muted,
+small {
+  color: var(--muted) !important;  /* טקסט משני */
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.site-header .navbar {
+  background: var(--line) !important; /* רקע ניווט */
+  box-shadow: 0 1px 0 rgba(0,0,0,.05); /* קו צל עדין */
+}
+
+.navbar .nav-link {
+  color: var(--ink) !important;    /* צבע קישורים */
+  font-weight: 500;                /* עובי טקסט בינוני */
+}
+
+.navbar .nav-link:hover {
+  color: var(--primary) !important; /* צבע בהובר */
+}
+
+.nav-active {
+  color: var(--primary) !important; /* קישור פעיל */
+  border-bottom: 2px solid var(--primary); /* קו תחתון */
+  font-weight: 700;                /* הדגשה */
+}
+
+/* ===============================
+   HOME PAGE
+================================ */
+body.home-page {
+  background: transparent !important; /* ביטול רקע רגיל */
+}
+
+body.home-page .page-bg {
+  position: fixed;                 /* רקע קבוע */
+  inset: 0;                        /* מתפרס על כל המסך */
+  z-index: 0;                      /* מאחורי התוכן */
+  background-image: url('../HTML/img/background.png'); /* תמונת רקע */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+body.home-page .page-bg::after {
+  content: "";                     /* שכבת גרדיאנט */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.45),
+    rgba(0,0,0,0) 55%
+  );
+}
+
+body.home-page .site-header,
+body.home-page main,
+body.home-page footer {
+  position: relative;              /* מעל הרקע */
+  z-index: 1;
+}
+
+body.home-page .hero {
+  min-height: 100vh;               /* גובה מסך מלא */
+  display: flex;
+  align-items: center;             /* מרכז אנכית */
+  background: transparent;
+}
+
+body.home-page .hero-title {
+  color: #fff;                     /* טקסט לבן */
+  text-shadow: 0 2px 20px rgba(0,0,0,.35); /* קריאות על תמונה */
+}
+
+body.home-page .hero-subtitle {
+  color: #e7f0f7;                  /* לבן רך */
+  text-shadow: 0 2px 16px rgba(0,0,0,.3);
+}
+
+/* ==================================================
+   ABOUT PAGE
+================================================== */
+.about-page .hero {
+  min-height: 70vh;                /* נמוך יותר מה-home */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  text-align: center;
+  color: #fff;
+}
+
+.about-page .hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.about-page .hero__bg::after {
+  content: "";                     /* גרדיאנט – כמו בדף הבית */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.45),
+    rgba(0,0,0,0) 55%
+  );
+}
+
+.about-page .hero__content {
+  position: relative;              /* מעל הרקע */
+  z-index: 1;
+}
+
+.about-page .hero__content h1,
+.about-page .hero__content p {
+  color: #fff;                     /* טקסט לבן */
+  text-shadow: 0 2px 18px rgba(0,0,0,.35);
+}
+
+/* Demo Video */
+.video-wrapper{
+  max-width: 420px; /* רוחב מותאם לסרטון אנכי */
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+  background: #000;
+  aspect-ratio: 3 / 4; /* יחס רוחב-גובה לסרטון אנכי */
+}
+
+.demo-video{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+/* ==================================================
+   LOGIN
+================================================== */
+.login-page {
+  min-height: calc(100vh - 80px);  /* גובה מסך פחות navbar */
+  display: flex;
+  align-items: center;
+}
+
+.login-card {
+  max-width: 420px;                /* רוחב טופס */
+  width: 100%;
+  margin-inline: auto;             /* ממרכז */
+  padding: 34px 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.login-card h2 {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ==================================================
+   MY GATE
+================================================== */
+
+#doorIcon {
+  margin-top: 40px;
+}
+
+#toggleButton {
+  margin-top: 20px;
+}
+
+/* ==================================================
+   MY PET – כרטיסי חיות
+================================================== */
+.pet-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #d8c7b7;             /* רקע כרטיס */
+  border: 1px solid var(--line);
+}
+
+.pet-card-img {
+  height: 300px;
+  overflow: hidden;
+}
+
+.pet-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* חיתוך יפה לתמונה */
+}
+
+.pet-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn-main {
+  background: var(--accent);
+  border: none;
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: .7rem 1.3rem;
+}
+
+.btn-main:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.pet-btn {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+}
+
+.pet-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ===============================
+   FOOTER
+================================ */
+footer {
+  background: var(--line);
+  border-top: 1px solid var(--line);
+}
+
+footer small {
+  color: var(--muted);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  body.home-page .hero {
+    text-align: center;             /* יישור למובייל */
+  }
+
+  .pet-card-img {
+    height: 220px;                  /* תמונות קטנות יותר */
+  }
+}

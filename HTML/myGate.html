@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Gate – PetSmart</title>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="stylesheet" href="../CSS/site.css?v=1">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html">
+          <img src="img/logo.png" alt="PetSmart Logo" height="70">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+
+          <span id="userGreeting" class="user-greeting"></span>
+
+          <ul class="navbar-nav ms-auto" id="navLinks">
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-5">
+    <h2 class="text-center mb-4">My Smart Gate Control</h2>
+
+    <div class="status-box mx-auto mb-5" style="max-width:540px">
+      <h4 style="text-align:center;">Status: <span id="gateStatus" class="text-danger fw-bold">Closed</span></h4>
+
+      <div class="text-center">
+        <i id="doorIcon" class="fa-solid fa-door-closed door-icon closed"
+          style="font-size: 80px; display: block; margin-bottom: 10px;"><link rel="icon" href="data:,"></i>
+      </div>
+
+      <div class="text-center">
+        <button id="toggleButton" class="btn btn-main mt-2">Open Gate</button>
+      </div>
+    </div>
+
+    <div class="card-soft mt-5">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <h5 class="card-title mb-0">
+            <i class="fa-solid fa-clock-rotate-left me-2 text-muted"></i>
+            Access History
+          </h5>
+
+          <button id="expandLogBtn" class="btn btn-outline-secondary btn-sm d-none">
+            Show all
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-borderless align-middle access-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Opened by</th>
+                <th>Action</th>
+                <th class="text-end">Time</th>
+              </tr>
+            </thead>
+            <tbody id="accessLog"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <script type="module" src="../JavaScript/firebaseconfig.js"></script>
+
+  <script type="module" src="../JavaScript/myGate.js"></script>
+
+  <script type="module" src="../JavaScript/navbar.js"></script>
+
+    <!-- FOOTER -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <small>© PetSmartGate – Smart Gate for Happy Pets</small><br>
+      <small>Contact us: liamelnikov@gmail.com</small>
+    </div>
+  </footer>
+</body>
+
+</html>

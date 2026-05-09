@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About – PetSmart</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/site.css">
+</head>
+
+<body class="about-page">
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html">
+          <img src="img/logo.png" alt="PetSmart Logo" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <span id="userGreeting" class="user-greeting"></span>
+          <ul class="navbar-nav ms-auto" id="navLinks"></ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero position-relative d-flex align-items-center justify-content-center text-center">
+    <div class="hero__bg" style="background-image:url('../HTML/img/background.png');"></div>
+
+    <div class="container hero__content py-5">
+      <h1 class="fw-bold reveal" style="--d:80ms">About Pet Smart</h1>
+      <p class="lead mt-2 reveal" style="--d:180ms">
+        Smart innovation for pets, powered by IoT technology
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="container py-5">
+
+    <section class="text-center mb-5">
+      <h2 class="fw-bold mb-3 reveal" style="--d:80ms">What is PetSmartGate?</h2>
+      <p class="fs-5 mx-auto reveal" style="--d:180ms; max-width:900px;">
+        PetSmartGate connects a <strong>smart collar</strong> and a <strong>smart pet door</strong>
+        to provide a seamless experience for pet owners and their furry friends.
+      </p>
+    </section>
+
+    <section class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="fw-bold mb-3 reveal" style="--d:80ms">Our Vision</h2>
+        <p class="text-muted fs-5 reveal" style="--d:180ms">
+          Technology that brings peace of mind, safety, and comfort to every home pet .
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="h3 text-center mb-4 reveal" style="--d:80ms">Key Features</h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="card feature-card h-100 reveal" style="--d:120ms">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-microchip"></i> Smart Collar</h5>
+              <p class="card-text mb-0">Secure identification and wireless communication.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card feature-card h-100 reveal" style="--d:200ms">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-door-open"></i> Smart Door</h5>
+              <p class="card-text mb-0">Opens only for recognized pets, with manual override.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card feature-card h-100 reveal" style="--d:280ms">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fa-solid fa-chart-line"></i> Permission Scheduling</h5>
+              <p class="card-text mb-0">Schedule and manage access permissions for your pets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- DEMO VIDEO -->
+    <section class="mb-5">
+      <h2 class="h3 text-center mb-4 reveal" style="--d:80ms">
+        Watch PetSmartGate in Action
+      </h2>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <div class="video-wrapper reveal" style="--d:180ms">
+            <video 
+              class="demo-video"
+              controls
+              autoplay
+              muted
+              loop
+            >
+              <source src="../HTML/video/petsmart-demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center mt-5 reveal" style="--d:220ms">
+      <a id="ctaBtn" class="btn btn-main px-4">
+        <i class="fa-solid fa-paw"></i> Start By Adding Your Pet
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <small>© PetSmartGate – Smart Gate for Happy Pets</small><br>
+      <small>Contact us: liamelnikov@gmail.com</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../JavaScript/firebaseconfig.js"></script>
+  <script type="module" src="../JavaScript/navbar.js"></script>
+  <script type="module" src="../JavaScript/about.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login – PetSmartGate</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+
+      
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html">
+        <img src="img/logo.png" alt="PetSmart Logo" height="70">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+
+        <span id="userGreeting" class="user-greeting"></span>
+
+        <ul class="navbar-nav ms-auto" id="navLinks">
+          <!-- navbar.js will fill this -->
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="login-page">
+  <div class="login-card">
+    <h2 id="formTitle">Welcome back</h2>
+    <p class="text-muted" id="formSubtitle">Login to your PetSmartGate account</p>
+
+    <div id="errorBox" class="alert alert-danger py-2 px-3" style="display:none;"></div>
+
+    <form id="authForm" class="text-start mt-3" novalidate>
+
+      <div id="nameRow" class="mb-3" style="display:none;">
+        <label class="form-label">Full name</label>
+        <input type="text" id="name" class="form-control" placeholder="Bella Cohen">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" id="email" class="form-control" placeholder="you@example.com" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="At least 6 characters" minlength="6" required>
+      </div>
+
+      <div id="confirmRow" class="mb-3" style="display:none;">
+        <label class="form-label">Password again</label>
+        <input type="password" id="password2" class="form-control" placeholder="Repeat password">
+      </div>
+
+      <button class="btn btn-main w-100 mb-3" id="submitBtn" type="submit">Login</button>
+    </form>
+
+    <a href="#" id="toggleLink" class="d-block mt-2">
+      Don’t have an account? <strong>Sign up</strong>
+    </a>
+  </div>
+</main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <small>© PetSmartGate – Smart Gate for Happy Pets</small><br>
+      <small>Contact us: liamelnikov@gmail.com</small>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- חשוב: אין צורך לטעון firebaseconfig.js כאן -->
+<script type="module" src="../JavaScript/firebaseconfig.js"></script>
+<script type="module" src="../JavaScript/login.js"></script>
+<script type="module" src="../JavaScript/navbar.js"></script>
+
+</body>
+</html>

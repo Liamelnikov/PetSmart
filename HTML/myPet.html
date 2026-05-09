@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Pet – PetSmartGate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../CSS/site.css">
+</head>
+
+<body>
+
+  <div class="page-bg" aria-hidden="true"></div>
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid px-4">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="home.html">
+          <img src="img/logo.png" alt="PetSmart Logo" height="70">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <span id="userGreeting" class="user-greeting"></span>
+          <ul class="navbar-nav ms-auto" id="navLinks"></ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+  <main class="container my-4">
+
+    <div class="d-flex justify-content-between mb-4">
+      <h2>My Pets</h2>
+      <button class="btn btn-main" data-bs-toggle="modal" data-bs-target="#addPetModal">
+        <i class="fa fa-plus"></i> Add Pet
+      </button>
+    </div>
+
+    <!-- PETS GRID -->
+    <div id="petsGrid" class="row g-4"></div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="text-center text-muted d-none mt-5">
+      <i class="fa fa-paw fa-2x mb-2"></i>
+      <p>No pets yet</p>
+    </div>
+
+    <!-- ================= ACTIVE PET ================= -->
+    <section id="activePetSection" class="row mt-5 d-none">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-lg-8">
+
+        <!-- RECENT ENTRIES -->
+        <div class="card p-4 mb-4">
+          <h4>Recent entries</h4>
+
+          <table class="table table-sm mt-3">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="petLogTable"></tbody>
+          </table>
+
+          <p id="noLogsText" class="text-muted d-none">
+            No recent entries yet
+          </p>
+
+          <button id="seeMoreLogsBtn" class="btn btn-sm btn-outline-primary">
+            See more
+          </button>
+        </div>
+
+        <!-- ACCESS CONTROL -->
+        <div class="card p-4">
+          <h4 class="mb-3">Access control</h4>
+
+          <!-- RULES LIST -->
+          <div id="rulesList" class="mb-3"></div>
+
+          <button id="addRuleBtn" class="btn btn-outline-primary btn-sm mb-3">
+            + Add rule
+          </button>
+
+          <!-- RULE EDITOR -->
+          <div id="ruleEditor" class="border rounded p-3 d-none">
+
+            <h6 id="ruleEditorTitle" class="mb-2">Add rule</h6>
+
+            <label class="form-label">Days</label>
+            <div class="d-flex flex-wrap gap-2 mb-2">
+              <label><input type="checkbox" class="day-cb" value="sun"> Sun</label>
+              <label><input type="checkbox" class="day-cb" value="mon"> Mon</label>
+              <label><input type="checkbox" class="day-cb" value="tue"> Tue</label>
+              <label><input type="checkbox" class="day-cb" value="wed"> Wed</label>
+              <label><input type="checkbox" class="day-cb" value="thu"> Thu</label>
+              <label><input type="checkbox" class="day-cb" value="fri"> Fri</label>
+              <label><input type="checkbox" class="day-cb" value="sat"> Sat</label>
+            </div>
+
+            <div class="form-check mb-2">
+              <input type="checkbox" id="editorAllDay" class="form-check-input">
+              <label class="form-check-label">All day</label>
+            </div>
+
+            <div class="d-flex gap-2 mb-3">
+              <select id="editorFrom" class="form-select"></select>
+              <select id="editorTo" class="form-select"></select>
+            </div>
+
+            <div class="d-flex gap-2">
+              <button id="saveRuleBtn" class="btn btn-primary btn-sm">Save rule</button>
+              <button id="cancelRuleBtn" class="btn btn-secondary btn-sm">Cancel</button>
+            </div>
+          </div>
+
+          <button id="saveAccessBtn" class="btn btn-success mt-3">
+            Save access rules
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-lg-4">
+        <div class="card p-4">
+
+          <div class="text-center">
+            <img id="activePetAvatar" class="rounded-circle mb-3" width="120" height="120" style="object-fit: cover;">
+            <h3 id="activePetName"></h3>
+            <span id="activePetSpecies" class="badge bg-secondary"></span>
+            <p class="text-muted mt-2">
+              Age: <span id="activePetAge"></span>
+            </p>
+          </div> <hr>
+          <h5>Collar status</h5>
+          <p id="collarStatusText"></p>
+          <button id="changeCollarBtn" class="btn btn-outline-primary btn-sm mb-3">
+            Change collar assignment
+          </button><hr>
+          <button id="deletePetBtn" class="btn btn-outline-danger btn-sm w-100">
+            Remove pet
+          </button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ================= CHANGE COLLAR MODAL ================= -->
+  <div class="modal fade" id="changeCollarModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Assign collar to pet</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <select id="petSelect" class="form-select mb-2"></select>
+          <select id="collarSelect" class="form-select">
+            <option value="">No collar</option>
+            <option value="collar1">Collar 1</option>
+            <option value="collar2">Collar 2</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button id="confirmChangeCollar" class="btn btn-primary">
+            Assign collar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= ADD PET MODAL ================= -->
+  <div class="modal fade" id="addPetModal" tabindex="-1">
+    <div class="modal-dialog">
+      <form id="addPetForm" class="modal-content">
+
+        <div class="modal-header">
+          <h5>Add pet</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <input name="name" class="form-control mb-2" placeholder="Name" required>
+
+          <select name="species" class="form-select mb-2">
+            <option>Dog</option>
+            <option>Cat</option>
+          </select>
+
+          <input name="age" type="number" class="form-control mb-2" placeholder="Age">
+
+          <select name="collarId" class="form-select mb-2">
+            <option value="">No collar</option>
+            <option value="collar1">Collar 1</option>
+            <option value="collar2">Collar 2</option>
+          </select>
+
+          <input name="photo" type="file" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary">Save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-4 text-center">
+    <div class="container">
+      <small>© PetSmartGate – Smart Gate for Happy Pets</small><br>
+      <small>Contact us: liamelnikov@gmail.com</small>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="../JavaScript/firebaseconfig.js"></script>
+  <script type="module" src="../JavaScript/myPet.js"></script>
+  <script type="module" src="../JavaScript/navbar.js" defer></script>
+
+
+</body>
+
+</html>
