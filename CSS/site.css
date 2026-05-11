@@ -235,7 +235,7 @@ body.home-page .hero-subtitle {
   flex-direction: column;
   border-radius: 12px;
   overflow: hidden;
-  background: #d8c7b7;             /* רקע כרטיס */
+  background: #d8c7b7;           
   border: 1px solid var(--line);
 }
 
